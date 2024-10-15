@@ -33,7 +33,7 @@ async function main() {
     };
 
     fs.writeFileSync(
-        'deployment-info.json',
+        './scripts/deployments/deployment-result.json',
         JSON.stringify(deploymentInfo, null, 2)
     );
 

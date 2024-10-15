@@ -1,0 +1,69 @@
+[
+  {
+    "contractName": "RealEstateToken",
+    "address": "0xC5E2fd6E8284FE0C532DA86709d4Dfbd6e201C83",
+    "network": "fuji",
+    "timestamp": "2024-10-14T09:00:00.076Z"
+  },
+  {
+    "contractName": "Issuer",
+    "address": "0x58Ce2f55Fc38Da928Cb90A7a111a5CE944530248",
+    "network": "fuji",
+    "timestamp": "2024-10-14T09:59:09.049Z"
+  },
+  {
+    "operation": "setIssuer",
+    "realEstateTokenAddress": "0xC5E2fd6E8284FE0C532DA86709d4Dfbd6e201C83",
+    "issuerAddress": "0x58Ce2f55Fc38Da928Cb90A7a111a5CE944530248",
+    "transactionHash": "0x476f65111a1baa50e740326efc0da7554f6119e86efa90252e6985207704d846",
+    "timestamp": "2024-10-14T10:59:54.734Z"
+  },
+  {
+    "operation": "issue",
+    "issuerAddress": "0x58Ce2f55Fc38Da928Cb90A7a111a5CE944530248",
+    "to": "0x1cA120FE7D1ecAE039393B098E409E67D8e23517",
+    "amount": 20,
+    "subscriptionId": 13548,
+    "gasLimit": 300000,
+    "donID": "0x66756e2d6176616c616e6368652d66756a692d31000000000000000000000000",
+    "transactionHash": "0x0ef10e30b30b26cb416a0b0cb6c5e2ac732cf12360a04202f87818a5c51dd675",
+    "blockNumber": 36287174,
+    "timestamp": "2024-10-15T02:46:46.164Z"
+  },
+  {
+    "operation": "issue",
+    "issuerAddress": "0x58Ce2f55Fc38Da928Cb90A7a111a5CE944530248",
+    "to": "0xDBa1BCcdCDAB79bd4e5F69eD823c803448b5bE4f",
+    "amount": 20,
+    "subscriptionId": 13548,
+    "gasLimit": 300000,
+    "donID": "0x66756e2d6176616c616e6368652d66756a692d31000000000000000000000000",
+    "transactionHash": "0xabaea38b0c2b220d99b279a9536a7f8398488d4e1dddff97878ff626487c2106",
+    "blockNumber": 36287667,
+    "timestamp": "2024-10-15T03:33:27.978Z"
+  },
+  {
+    "operation": "issue",
+    "issuerAddress": "0x58Ce2f55Fc38Da928Cb90A7a111a5CE944530248",
+    "to": "0xDBa1BCcdCDAB79bd4e5F69eD823c803448b5bE4f",
+    "amount": 20,
+    "subscriptionId": 13548,
+    "gasLimit": 300000,
+    "donID": "0x66756e2d6176616c616e6368652d66756a692d31000000000000000000000000",
+    "transactionHash": "0xbbe879a256b6bbf29e1e146cbcb3f4bb69517a0e745dfa021b077a6581904a45",
+    "blockNumber": 36287694,
+    "timestamp": "2024-10-15T03:34:45.648Z"
+  },
+  {
+    "operation": "issue",
+    "issuerAddress": "0x58Ce2f55Fc38Da928Cb90A7a111a5CE944530248",
+    "to": "0xDBa1BCcdCDAB79bd4e5F69eD823c803448b5bE4f",
+    "amount": 20,
+    "subscriptionId": 13548,
+    "gasLimit": 300000,
+    "donID": "0x66756e2d6176616c616e6368652d66756a692d31000000000000000000000000",
+    "transactionHash": "0x7d04bb293868d73f94e1f22a203e574e4142e67df765659ab54663855af196c8",
+    "blockNumber": 36287701,
+    "timestamp": "2024-10-15T03:35:08.530Z"
+  }
+]
