@@ -2,40 +2,58 @@ const hre = require("hardhat");
 const fs = require("fs");
 
 async function main() {
-    const [deployer] = await hre.ethers.getSigners();
+  const [deployer] = await hre.ethers.getSigners();
 
-    console.log("Deploying contracts with the account:", deployer.address);
+  console.log("Deploying contracts with the account:", deployer.address);
 
-    // 获取之前部署的 RealEstateToken 地址
-    const REAL_ESTATE_TOKEN_ADDRESS = "0xC5E2fd6E8284FE0C532DA86709d4Dfbd6e201C83";
-    // Fuji 测试网上的 Functions Router 地址
-    const FUNCTIONS_ROUTER_ADDRESS = "0xA9d587a00A31A52Ed70D6026794a8FC5E2F5dCb0";
+  const deploymentsPath = "./scripts/deployments/deployed.json";
 
-    // 部署 Issuer 合约
-    const Issuer = await hre.ethers.getContractFactory("Issuer");
-    const issuer = await Issuer.deploy(REAL_ESTATE_TOKEN_ADDRESS, FUNCTIONS_ROUTER_ADDRESS);
+  // 读取部署信息
+  const deployments = JSON.parse(fs.readFileSync(deploymentsPath, "utf8"));
 
-    await issuer.waitForDeployment();
+  // 获取最新的 realEstateToken 地址
+  const realEstateTokenDeployment = deployments.find(
+    (d) => d.contractName === "RealEstateToken"
+  );
 
-    console.log("Issuer deployed to:", issuer.target);
+  if (!realEstateTokenDeployment) {
+    throw new Error("无法找到 realEstateTokenDeployment 的部署信息");
+  }
 
-    const deploymentInfo = {
-        contractName: "Issuer",
-        address: issuer.target,
-        network: hre.network.name,
-        timestamp: new Date().toISOString()
-    };
+  const realEstateTokenAddress = realEstateTokenDeployment.address;
+  console.log("RealEstateToken address:", realEstateTokenAddress);
+  
+  // Fuji 测试网上的 Functions Router 地址
+  const FUNCTIONS_ROUTER_ADDRESS = "0xA9d587a00A31A52Ed70D6026794a8FC5E2F5dCb0";
 
-    fs.writeFileSync(
-        './scripts/deployments/deploy-issuer-result.json',
-        JSON.stringify(deploymentInfo, null, 2)
-    );
+  // 部署 Issuer 合约
+  const Issuer = await hre.ethers.getContractFactory("Issuer");
+  const issuer = await Issuer.deploy(
+    realEstateTokenAddress,
+    FUNCTIONS_ROUTER_ADDRESS
+  );
 
+  await issuer.waitForDeployment();
+
+  console.log("Issuer deployed to:", issuer.target);
+
+  const deploymentInfo = {
+    contractName: "Issuer",
+    address: issuer.target,
+    network: hre.network.name,
+    timestamp: new Date().toISOString(),
+  };
+
+  deployments.push(deploymentInfo);
+  fs.writeFileSync(
+    deploymentsPath,
+    JSON.stringify(deployments, null, 2)
+  );
 }
 
 main()
-    .then(() => process.exit(0))
-    .catch((error) => {
-        console.error(error);
-        process.exit(1);
-    });
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });

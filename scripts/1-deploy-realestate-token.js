@@ -25,16 +25,19 @@ async function main() {
 
     console.log("RealEstateToken deployed to:", realEstateToken.target);
 
+    const deployments = [];
     const deploymentInfo = {
         contractName: "RealEstateToken",
         address: realEstateToken.target,
         network: hre.network.name,
         timestamp: new Date().toISOString()
     };
+    deployments.push(deploymentInfo);
+    const deploymentsPath = "./scripts/deployments/deployed.json";
 
     fs.writeFileSync(
-        './scripts/deployments/deployment-result.json',
-        JSON.stringify(deploymentInfo, null, 2)
+        deploymentsPath,
+        JSON.stringify(deployments, null, 2)
     );
 
     console.log("Deployment info saved to deployment-info.json");
